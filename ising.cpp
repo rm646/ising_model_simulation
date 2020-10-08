@@ -4,7 +4,7 @@
 #include <gsl/gsl_integration.h>
 #include <fstream>
 #include <cmath>
-#include "/ux/PHYSICS/PART_2/c++/cavlib/constants.hh"
+#include "headers/constants.cc"
 #include "headers/sys_parameters.h" //include kb, mu, J, H, Ni, Nj and tmax
 #include "headers/spin_ops.h"	//functions for operating on spins (flip and convert to int value)
 #include "headers/calc_functions.h"	//functions to calculate various quantities of interest
@@ -14,7 +14,7 @@
 
 
 
-int main(int argc, char* argv[]){   
+int main(int argc, char* argv[]){
   //Variables for the run
   int t_eq; //time to allow the system to reach eq. before measuring eq. quantities
   int seed_spin; //seed for selecting spins
@@ -24,7 +24,7 @@ int main(int argc, char* argv[]){
   double Tmax;
   double dT;
   process_args(argc, argv, &t_eq, &seed_init, &seed_bolt, &seed_spin, &Tmin, &Tmax, &dT);
-                                                                                                                                                  
+
 
   //Setup random number generators for spin selection and boltzmann test seperately
   const gsl_rng_type * Type;
@@ -44,34 +44,33 @@ int main(int argc, char* argv[]){
 
   //Declare the array of spins
   int spins[Ni][Nj];
-  
+
   //Initialize them
   initialize_uniform(spins,1);
   //initialize_random(spins, r_init);
 
   //Print the parameters
   output_parameters(seed_init, seed_bolt, seed_spin, t_eq);
-  
-  //Calculate and print data using one of the 'experiments' 
-  
+
+  //Calculate and print data using one of the 'experiments'
+
   magnetisation_vs_time(spins, r_bolt, r_spin, Tmin, 'r');
-  
-  
+
+
   //energy_vs_time(spins, r_bolt, r_spin, Tmin, 'r');
-  
-  
+
+
   //snapshot(spins, t_eq, r_bolt, r_spin, Tmin);
 
 
   //magnetisation_vs_temp(Tmin, Tmax, dT, t_eq, spins, r_bolt, r_spin, 'r');
-  
-  
+
+
   //energy_vs_temp(Tmin, Tmax, dT, t_eq, spins, r_bolt, r_spin, 'r');
-  
-  
+
+
   //c_vs_temp(Tmin, Tmax, dT, t_eq, spins, r_bolt, r_spin, 'r');
 
-  
+
   return 0;
 }
-
