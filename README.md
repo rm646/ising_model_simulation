@@ -26,10 +26,23 @@ others in 'ising.cpp'. The program will output line by line to the console.
 ```
 
 Arguments:
-- t_eq: time to allow the system to reach eq. before measuring eq. quantities
-- seed_spin: seed for selecting spins
-- seed_bolt:  seed for boltzmann test
-- seed_init: seed for initialization
-- Tmin: the set temperature for experiments which don't vary in temperature, and the minimum temperature for experiments which do
-- Tmax: the maximum temperature for experiments which vary in temperature
-- dT: the temperature step for experiments which vary in temperature
+- t_eq: time to allow the system to reach eq. before measuring eq. quantities, default 0
+- seed_spin: seed for selecting spins, default 100
+- seed_bolt:  seed for boltzmann test, default 100
+- seed_init: seed for initialization, default 100
+- Tmin: the set temperature for experiments which don't vary in temperature, and the minimum temperature for experiments which do, default 1.0
+- Tmax: the maximum temperature for experiments which vary in temperature, default 3.4
+- dT: the temperature step for experiments which vary in temperature, default 0.1
+
+Unfortunately I've lost the gnuplot scripts associated with this project.
+Most experiments have a clear and simple output structure
+(see headers/experiments.h comments), so they should be pretty easy to plot.
+
+For spin image data, I've written a short Python script to do so, e.g. after
+editing 'ising.cpp' to make 'snapshot' the experiment, run
+
+```
+g++ -O3 -Wall ising.cpp -o ising -lgsl
+./ising 1000 1 1 1 10.0 1 1 > spin_image_data.tsv
+python plot_spin_image.py
+```

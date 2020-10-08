@@ -54,13 +54,13 @@ int main(int argc, char* argv[]){
 
   //Calculate and print data using one of the 'experiments'
 
-  magnetisation_vs_time(spins, r_bolt, r_spin, Tmin, 'r');
+  //magnetisation_vs_time(spins, r_bolt, r_spin, Tmin, 'r');
 
 
   //energy_vs_time(spins, r_bolt, r_spin, Tmin, 'r');
 
 
-  //snapshot(spins, t_eq, r_bolt, r_spin, Tmin);
+  snapshot(spins, t_eq, r_bolt, r_spin, Tmin);
 
 
   //magnetisation_vs_temp(Tmin, Tmax, dT, t_eq, spins, r_bolt, r_spin, 'r');

@@ -26,11 +26,12 @@ int process_args(int argc, char* argv[], int* t_eq, int* seed_init, int* seed_bo
     *Tmin = 1.0;
     *Tmax = 3.4;
     *dT = 0.1;
+    std::cout<<"#Using default arguments: "<<*t_eq<<", "<<*seed_init<<", "<<*seed_bolt<<", "<<*seed_spin<<", "<<*Tmin<<", "<<*Tmax<<", "<<dT<<"\n";
   }
-   
+
   if (argc >1 && argc !=8) {
     //If the number of arguments is awkward, give up and exit the program
-    std::cerr<< "\n Invalid set of arguments. Usage: ./ising t_eq seed_init seed_bolt seed_spin T";
+    std::cerr<< "\n Invalid set of arguments. Usage: ./ising t_eq seed_init seed_bolt seed_spin T\n";
     exit(1);
   }
 
